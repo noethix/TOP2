@@ -1,0 +1,7 @@
+vich_uploader:
+    db_driver: orm
+
+    mappings:
+        news:
+            uri_prefix: '%app.path.uploads_files%'
+            upload_destination: '%kernel.root_dir%/../public/uploads/files/'

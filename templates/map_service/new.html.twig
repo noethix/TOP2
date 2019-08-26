@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New MapService{% endblock %}
+
+{% block body %}
+    <h1>Create new MapService</h1>
+
+    {{ include('map_service/_form.html.twig') }}
+
+    <a href="{{ path('map_service_index') }}">back to list</a>
+{% endblock %}

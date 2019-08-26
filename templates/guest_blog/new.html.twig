@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Something to share ?{% endblock %}
+
+{% block body %}
+    <h1>I want to share this :</h1>
+
+    {{ include('guest_blog/_form.html.twig') }}
+
+    <a href="{{ path('guest_blog_index') }}">Back to blog</a>
+{% endblock %}

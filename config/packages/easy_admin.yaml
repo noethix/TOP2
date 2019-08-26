@@ -1,0 +1,35 @@
+easy_admin:
+    site_name: 'TOP - Manager Panel'
+    entities:
+        News:
+            class: App\Entity\News
+            list:
+                fields:
+                    - { property: 'Title' }
+                    - { property: 'Date'}
+                    - { property: 'image', type: 'image' ,  base_path: 'uploads/files/' }
+            form:
+                fields:
+                    - { property: 'Title' }
+                    - { property: 'Date'}
+                    - { property: 'Content', type: 'text_editor' }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Attachments', icon: 'paperclip' }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
+        Notice:
+            class: App\Entity\Notice
+            file_base_path: '..\uploads\files\'
+            list:
+                fields:
+                    - { property: 'Title' }
+                    - { property: 'Date'}
+                    - { property: 'photo', type: 'image' ,  base_path: '..\uploads\files\' }
+            form:
+                fields:
+                    - { property: 'Title' }
+                    - { property: 'Date'}
+                    - { property: 'Content', type: 'text_editor' }
+                    - { property: 'photo', type: 'file_upload' , type_options: { upload_filename: '[slug]-[contenthash].[extension]' , upload_dir: 'public\uploads\files\' } }
+        User:
+            class: App\Entity\User
+        Subject:
+            class: App\Entity\Subject

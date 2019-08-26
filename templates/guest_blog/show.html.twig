@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GuestBlog{% endblock %}
+
+{% block body %}
+    <h1>GuestBlog</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ guest_blog.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ guest_blog.Title }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ guest_blog.Date ? guest_blog.Date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td>{{ guest_blog.Photo }}</td>
+            </tr>
+            <tr>
+                <th>Service</th>
+                <td>{{ guest_blog.Service }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('guest_blog_index') }}">back to list</a>
+
+    <a href="{{ path('guest_blog_edit', {'id': guest_blog.id}) }}">edit</a>
+
+    {{ include('guest_blog/_delete_form.html.twig') }}
+{% endblock %}

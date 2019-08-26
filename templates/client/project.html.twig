@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}The Project{% endblock %}
+
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{asset('../public/CSS/base.css')}}">
+
+{% endblock %}
+
+
+{% block body %}
+
+<section class="project-TOP">
+    <div class="who">
+        <h1 class="who-shelter-headers">Who we are</h1>
+        <p class="project-text">We are LGBTIQ+ colleagues, friends & activists who work in the Homeless sector & have lived experience of homelessness & the unique, complex issues our community face. We volunteered to launch the UK’s first LGBTIQ+ Crisis/Homeless Shelter & Community Centre. We launched publicly at London Pride 2017, campaigning alongside the passionate & talented LGBTIQ+ community of activists & artists.</p>
+
+        <img class="who-pic" src="{{ asset('PICS/Pride.jpg') }}" alt="the two founders of the outside project"></img>
+        <figcaption>Project founders Carla & Laik attaching the banner to the Pride Punx float at London Pride – July 2017</figcaption>
+    </div>
+
+    <div class="timetable">
+        <h1 class="community-header">Community Center Timetable</h1>
+        <div class="timetable-details">
+            <div class="community-activities">
+                <h2 class="monday days">Monday</h2>
+            </div>
+
+            <div class="community-activities">
+                <h2 class="tuesday days">Tuesday</h2>
+                <p>Homelessness Recovery Group  9:30 - 10:30</p>
+                <p>Smoothie Tuesdays  10:30 - 12:30</p>
+                <p>[ From the 24th September ] Queer Art Youth Collective - 16:30 to 18:30</p>
+            </div>
+
+            <div class="community-activities">
+                <h2 class="wednesday days">Wednesday</h2>
+                <p>Community Hub  18:00 - 21:00</p>
+            </div>
+
+            <div class="community-activities">
+                <h2 class="thursday days">Thursday</h2>
+            </div>
+
+            <div class="community-activities">
+                <h2 class="friday days">Friday</h2>
+            </div>
+
+            <div class="community-activities">
+                <h2 class="days">First Sunday of every month</h2>
+                <p>LGBTQIA+ Cancer Peer Support Group</p>
+            </div>
+
+            <div class="community-activities">
+                <h2 class="days">Punctual Activities</h2>
+                <p></p>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="shelter">
+        <h1 class="who-shelter-headers">The Shelter</h1>
+        <p class="project-text">During the summer 2017 we crowdfunded £11.5k. This enabled us to buy a 12 bed tour bus to host the shelter that winter. Through ongoing support from the community & grant funding from the local authority we were able to deliver a professional shelter &demonstrating the need for this vital service on a year round basis.</p>
+
+        <img class="shelter-pic" src="{{ asset('PICS/shelter.jpg') }}" alt="three people siiting under a dome"></img>
+        <figcaption>To celebrate the arrival of the shelter in the area ahead of its opening, local groups met to present their projects & do a walk of solidarity, followed by a sleep-in at the shelter. November 2017.</figcaption>
+    </div>
+</section>
+
+
+<hr class="hr-two">
+
+<section class="project-history">
+    <div class="community-centre">
+        <h1>Community Center</h1>
+        <p>The shelter has a community centre at its heart to reach those more at risk of rough sleeping & bring together our community so that marginalised groups do not feel left ‘outside’. The centre will be a mix of cultural & artistic hub, offering safe daytime refuge & cafe space alongside queer led services, pop-up businesses & co-working space for marginalised groups. Holistic case work, advice, housing & employment support will be delivered by Stonewall Housing.<br>
+        We will be collaborating with several LGBTIQ+ groups to make good use of the space, such as <a href="https://www.queerseum.org/" target="-blank">Queerseum</a>, <a href="https://africanrainbowfamily.org/" target="-blank">African Rainbow Family</a> & <a href="https://www.facebook.com/friendsofthejoinersarms" target="-blank">Friends of the Joiners Arms</a>.</p>
+    </div>
+    <div class="mission">
+        <h1>Our Mission</h1>
+        <p>The Outside Project is a homeless/crisis shelter & Community Centre in response to those within the LGBTIQ+ community who feel endangered, who are homeless, ‘hidden’ homeless & feel that they are on the outside of services due to historical & present prejudice in society & in their homes.
+
+            Our aims:
+          <ul>
+              <li>- Create space to empower & bring together our whole community</li>
+              <li>- Provide a free, safe, inclusive & caring space for all LGBTIQ+ guests</li>
+              <li>- Practically, professionally & emotionally support our guests</li>
+              <li>- Develop positive relationships with services & strengthen support to the LGBTIQ+ community</li>
+              <li>- Share our knowledge to educate others on the unique & complex needs of the LGBTIQ+ community</li>
+              <li>- Advocate for LGBTIQ+ rights & needs within services</li>
+              <li>- Promote a clean, safe & sober lifestyle within the LGBTIQ+ community</li>
+              <li>- Grow into a full time, year round service with permanent premises & more amenities, supporting LGBTIQ+ groups to use the bus as a shelter & model out the project in other areas.</li>
+          </ul>   
+            </p>
+    </div>
+    <div class="visibility">
+        <h1>Visibility, fundraising & promotion</h1>
+        <p>We host & attend events & fundraisers to promote the project, reaching members of the community that hadn’t considered themselves to be in crisis or at risk of homelessness. We run workshops & sober spaces at community events eg: Pride events, Grassmovement Festival, Lush on Oxford Street & the Lush Summit, Teen Challenge, Trans Pride, youth camps.<br>
+
+            We are very active on social media, building a large following across sites.</p>
+    </div>
+    <div class="non-lgbtiq">
+        <h1>Non- LGBTIQ+ Specific Services:</h1>
+        <p>We are happy to attend team meetings & services to encourage better practise in services. It is especially helpful for us to attend HPU’s, homelessness services, physical, mental & sexual health services & drug & alcohol services.<br>
+
+            We have presented the project at several appropriate meetings within the sector such as the East London Delivery Board, Homeless Link’s Outreach worker forum, Pan London Outreach Womens Network, Domestic Violence conferences, & Council & local service team meetings.<br>
+            
+            If you would like a member of our team to attend your service or deliver a workshop at your event, please contact Carla.
+            </p>
+    </div>
+</section>
+
+<hr class="hr-two">
+
+<section class="news">
+    <h1 class="headers header-news ">News</h1>
+        
+        {% for news in news %}
+            
+               
+                <h1>{{ news.Title | raw  }}</h1>
+                <p>{{ news.Date ? news.Date|date('d-m-Y') : '' }}</p>
+                <p>{{ news.Content | raw  }}</p>
+                
+                <img class="news-pic" src="{{ asset('uploads/files/' ~ news.getImage()) }}" alt=""></img>
+        
+        {% else %}
+           <!--<tr>
+                <td colspan="6">no records found</td>
+            </tr>--> 
+        {% endfor %}
+        
+    
+
+    
+</section>
+
+{% endblock %}

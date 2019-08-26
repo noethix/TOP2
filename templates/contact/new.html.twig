@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact Us{% endblock %}
+
+
+{% block stylesheets %}
+
+<link rel="stylesheet" href="{{asset('../public/CSS/base.css')}}">
+
+{% endblock %}
+
+
+{% block body %}
+
+{% for flash_message in app.session.flashbag.get('notice') %}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ flash_message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+        </button>
+        </div> 
+{% endfor %}
+
+
+<h1 class="headers headers-contact headers-contact-top">If you are in crisis or homeless please see our <a href="{{ path ('help') }}">Need Help? </a>page for more information.</h1>
+
+<h2 class="warning headers-contact">We do not let press / students / researchers into our shelter. Please be respectful and do not ask.</h2>
+
+<h1 class="headers headers-contact">Get in touch!</h1>
+
+    {{ include('contact/_form.html.twig') }}
+
+<section class="team">
+        <h1>Our Team</h1>
+        <div class="team-members">
+                <p><b>Project Director:</b> Carla Ecola </p>
+                <p><b>Art Director:</b> Fredrik Andersson</p>
+                <p><b>Campaigns Manager:</b> Harry Gay </p>
+                <p><b>Hub Co-ordinator:</b> Jesse Ashman</p>
+                <p><b>Volunteer co-ordinator:</b> Lillian Zeitelhack</p>
+        </div>
+</section>
+
+<section class="volunteering">
+        <h1>Volunteering</h1>
+        <p>This project could not exist without its crew of volunteers. Their empathy, solidarity, lived experience & vibrancy create the unique ‘found family’ vibe of our community spaces.<br><a href="{{asset('../public/downloads/Befriender-Form-updated-27_5.docx')}}" download>You  can get the ‘BEFRIENDER VOLUNTEER APPLICATIONS OPEN’ here</a>.<br>
+        For any support with your application or more information about the role please contact our Volunqueer co-ordinator Lillian.</p>
+</section>
+<section class="hosting">
+        <h2>Hosting</h2>
+        <p>If you have a spare room or sofa & are interested in hosting a guest from the shelter, please contact Carla</p>
+</section>
+
+{% endblock %}

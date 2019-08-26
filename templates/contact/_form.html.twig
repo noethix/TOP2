@@ -1,0 +1,23 @@
+{{ form_start(form) }}
+<div class="form">
+      {{ form_row(form.Name) }}
+   </div>
+
+   <div class="form">
+      {{ form_row(form.Email) }}
+   </div>
+   
+   <div class="form">
+         {{ form_row(form.Subject) }}
+   </div>
+
+   <div class="form">
+         {{ form_row(form.Content) }}
+   </div>
+   
+  <div class="form">
+       <button class="btn-contact">{{ button_label|default('Send') }}</button>
+   </div>
+
+    
+{{ form_end(form) }}
