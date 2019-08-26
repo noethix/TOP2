@@ -199,15 +199,17 @@ html, body {
 
 .project-TOP {
   display: flex;
+  flex-direction: row;
+  flex-wrap:wrap;
 }
 
 .who, .shelter {
-  flex-grow: 1 ;
+  flex: 1 ;
   width: 20%;
 }
 
 .timetable {
-  flex-grow: 2 ;
+  flex: 2 ;
 }
 
 .who-shelter-headers, .community-header, .project-history h1  {
@@ -317,8 +319,38 @@ ul li {
   padding: 0% 5%;
 }
 
+.header-news {
+  padding: 0 0 2% 15% !important;
+}
+
+.news-title {
+  font-family: 'Playfair Display', serif;
+  padding-bottom: 2%;
+}
+.news-content {
+  display: flex;
+  flex-direction: row;
+  padding: 4% 0 6% 0;
+  border-width: 1px 0  0 0;
+  border-style: solid;
+  border-color: rgba(218, 218, 218);
+}
+
+.news-date {
+  flex: 1;
+  padding-right: 8%;
+  font-family: 'Roboto Condensed', sans-serif;
+  color: rgb(104, 104, 104);
+  font-size: 0.7rem;
+  font-weight: 300;
+}
+.news-content-middle {
+  padding: 0 4% 0 0;
+}
 .news img {
-  width: 50%;
+  width: 250px;
+  height: 200px;
+  object-fit: cover
 }
 
 
@@ -539,6 +571,7 @@ form textarea {
   text-decoration: none;
   font-family: 'EB Garamond', serif;
   font-size: 1.3rem;
+  color: #000;
 }
 #inputUsername, #inputPassword {
   margin: 2% 0;
@@ -549,6 +582,9 @@ form textarea {
 .blog-top {
   padding-top: 15%;
 }
+
+
+
 
   @media screen and (max-width: 800px) {
 
@@ -623,6 +659,83 @@ form textarea {
         margin-top: 5%;
     }
 
+
+/*     SHELTER     */
+
+    .project-TOP {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .who, .shelter {
+      width: 100% !important;
+    }
+
+    .timetable {
+      flex-grow: auto ;
+      padding: 10% 5%; 
+    }
+
+    .project-text {
+      padding: 10%;
+    }
+
+    .shelter-pic, .who-pic {
+      max-width: 80%;
+  }
+
+  figcaption {
+    padding: 5% 10%;
+}
+    .who, .timetable, .community-centre, .mission, .visibility {
+      border-width: 0 0;
+      border-style: none;
+    }
+
+    .project-history {
+      margin-top: 5%;
+      padding: 10% 5%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .community-centre, .mission, .visibility, .non-lgbtiq {
+      flex: 1;
+      padding: 10% 5%;
+  }
+  
+    .news-content {
+      display: flex;
+      flex-direction: column;
+      padding: 10% 5%;
+      border-width:  1px 0 0 0;
+      border-style: solid;
+      border-color: rgba(218, 218, 218);
+    }
+    
+    .news-date {
+      flex: 1;
+      padding-right: 0;
+    }
+
+    .news-content-middle {
+      padding: 0 4% 0 0;
+    }
+
+    .news-text {
+      text-align: justify;
+    }
+    
+    .news-pic {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 250px !important;
+      padding: 5%;
+      height: 200px !important;
+    }
+    
+
 /*     NEED HELP?     */
 
     .message {
@@ -670,4 +783,9 @@ form textarea {
         padding: 0 4px;
     }
 
+  }
+
+  @media screen and (max-width: 380px) {
+    .nav-right {
+      width: 370px;
   }

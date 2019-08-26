@@ -288,6 +288,8 @@ h2 {
 
 
 @media screen and (max-width: 800px) {
+  /*     NAVBAR     */
+  
     .info {
         font-size: .6rem;
     }
@@ -352,12 +354,26 @@ h2 {
         justify-content: center;
         align-items: center;
      }
-
+     /*     HOME     */
     .home {
         margin-top: 5%;
     }
 
+    .home-TOP {
+        flex-direction: column;
+    }
     
+    .notice-board {
+        padding: 15% 10% 10% 10%;
+    }
+
+    .intro-shelter {
+        padding: 10%;
+        border-width:  1px 0 0 0;
+        border-style: solid;
+        border-color: rgba(218, 218, 218);
+    }
+
     .footer-links {
         font-size: .6rem;
         flex-direction: column;
@@ -368,3 +384,8 @@ h2 {
         padding: 0 4px;
     }
 }
+
+@media screen and (max-width: 380px) {
+    .nav-right {
+      width: 370px;
+  }

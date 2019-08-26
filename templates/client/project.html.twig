@@ -114,21 +114,22 @@
     </div>
 </section>
 
-<hr class="hr-two">
+<!--<hr class="hr-two">-->
 
 <section class="news">
     <h1 class="headers header-news ">News</h1>
         
         {% for news in news %}
             
-               
-                <h1>{{ news.Title | raw  }}</h1>
-                <p>{{ news.Date ? news.Date|date('d-m-Y') : '' }}</p>
-                <p>{{ news.Content | raw  }}</p>
-                
-                <img class="news-pic" src="{{ asset('uploads/files/' ~ news.getImage()) }}" alt=""></img>
-        
-        {% else %}
+               <div class="news-content">
+               <p class="news-date">{{ news.Date ? news.Date|date('d-m-Y') : '' }}</p>
+               <div class="news-content-middle">
+                   <h1 class="news-title">{{ news.Title | raw  }}</h1>
+                   <div class="news-text">{{ news.Content | raw  }}</div>
+               </div>
+                <img class="news-pic" src="{{ asset('uploads/files/' ~ news.getImage()) }}" alt=""></img>    
+                </div>  
+       
            <!--<tr>
                 <td colspan="6">no records found</td>
             </tr>--> 
