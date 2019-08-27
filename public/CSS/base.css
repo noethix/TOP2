@@ -775,6 +775,16 @@ form textarea {
       height: 200px !important;
     }
     
+/*     NOTICE BOARD     */
+
+.header-notice {
+  padding-top: 20% !important;
+}
+
+.notice-box img {
+  padding: 6% 0;
+}
+
 
 /*     NEED HELP?     */
 
