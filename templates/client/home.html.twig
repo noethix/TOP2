@@ -30,7 +30,7 @@
     </section>
     <div class="top-top">
             <p class="info">To leave this website quickly, click 'Eascape Route' below or logo.</p>
-            <p class="login">Login</p>
+            <p class="login"><a href="{{ path ('app_login') }}">Login</a></p>
         </div>
         
     <div class="topnav" id="topnav">
@@ -67,10 +67,13 @@
             <h1 class =" header-notice-board">Notice Board</h1>
             {% for notice in notices %}
             
-                <h1>{{ notice.Title | raw }}</h1>
-                <p>{{ notice.Date ? notice.Date|date('d-m-Y') : '' }}</p>
-                <img>{{ notice.Photo }}</img>
-                <p>{{ notice.Content | raw }}</p>
+                <h3>{{ notice.Title | raw }}</h3>
+                <p class="date">{{ notice.Date ? notice.Date|date('d-m-Y') : '' }}</p>
+                <img class="news-pic" src="{{ asset('uploads/files/' ~ notice.getImage()) }}" alt=""></img>
+                <p class="notice-content">{{ notice.Content | easyadmin_truncate (300, true) | raw }}</p>
+                <p class="readmore"><a href="{{ path ('notice') }}">READ MORE</a></p>
+            </div>
+                
                 <!--<td>
                     <a href="{{ path('notice_show', {'id': notice.id}) }}">show</a>
                     <a href="{{ path('notice_edit', {'id': notice.id}) }}">edit</a>
@@ -83,36 +86,36 @@
         {% endfor %}
         </div>
 
-        <div class="intro-shelter">
-            <h1 class="header-intro"> 📢 LONDON LGBTIQ+ SHELTER 🏳️‍🌈‬</h1>
-
-            <div class="info-shelter">
-                <p>Christmas is over, but our service is needed year round. Are you in crisis, homeless, sofa-surfing, survival sex-working? Reach us & Stonewall Housing:</p>
-<p>☎️ tel: 0207 359 5767 (10am-1pm)</p>
-
-<p>💻 online referral: <a href="http://stonewallhousing.org/services/referral-form/" target="_blank">CLICK HERE</a></p>
-
-<p>👥 drop-ins:</p>
-
-<h2>Monday  18:00 – 21:00 </h2>
-<p>The Outside Project Camden Hub. Castlehaven Community Association, 23 Castlehaven Road NW1 8RU</p>
-
-<h2> Wednesday  14:00 – 15:30</h2>
-<p>Origin Housing, St Richards House, 110 Eversholt Street, London, NW1 1BS</p>
-
-<h2>Friday 14:00 – 15:30</h2>
-<p>London Friend, 86 Caledonian Road, London, N1 9DN</p>
-
-<p>Monthly drop in sessions</p>
-<h2>First Wednesday of every month  17:00 – 19:00</h2>
-<p>cliniQ, 56 Dean Street, London, W1D 6AQ (for trans people) </p>
-
-<h2>Second Wednesday of every month  12:00 – 14:00 </h2>
-<p>Camden LGBT Forum Hub at Union Chapel, Compton Terrace, London, N1 2UN</p>
-
-<p>All services are free and confidential and all the venues are accessible for people with disabilities. No appointments necessary. (Pre-arranged appointments can be made for between 15.30 and 17.00) 
-#homelesslgbtiqsolidarity #LGBTIQcommunitycentre #identityresponsiveservices</p>
-            </div>
+    </div>
+            <div class="intro-shelter">
+                <h1 class="header-intro"> 📢 LONDON LGBTIQ+ SHELTER 🏳️‍🌈‬</h1>
+    
+                <div class="info-shelter">
+                    <p>Christmas is over, but our service is needed year round. Are you in crisis, homeless, sofa-surfing, survival sex-working? Reach us & Stonewall Housing:</p>
+    <p>☎️ tel: 0207 359 5767 (10am-1pm)</p>
+    
+    <p>💻 online referral: <a href="http://stonewallhousing.org/services/referral-form/" target="_blank">CLICK HERE</a></p>
+    
+    <p>👥 drop-ins:</p>
+    
+    <h2>Monday  18:00 – 21:00 </h2>
+    <p>The Outside Project Camden Hub. Castlehaven Community Association, 23 Castlehaven Road NW1 8RU</p>
+    
+    <h2> Wednesday  14:00 – 15:30</h2>
+    <p>Origin Housing, St Richards House, 110 Eversholt Street, London, NW1 1BS</p>
+    
+    <h2>Friday 14:00 – 15:30</h2>
+    <p>London Friend, 86 Caledonian Road, London, N1 9DN</p>
+    
+    <p>Monthly drop in sessions</p>
+    <h2>First Wednesday of every month  17:00 – 19:00</h2>
+    <p>cliniQ, 56 Dean Street, London, W1D 6AQ (for trans people) </p>
+    
+    <h2>Second Wednesday of every month  12:00 – 14:00 </h2>
+    <p>Camden LGBT Forum Hub at Union Chapel, Compton Terrace, London, N1 2UN</p>
+    
+    <p>All services are free and confidential and all the venues are accessible for people with disabilities. No appointments necessary. (Pre-arranged appointments can be made for between 15.30 and 17.00) 
+    #homelesslgbtiqsolidarity #LGBTIQcommunitycentre #identityresponsiveservices</p>
         </div>
     </section>
        

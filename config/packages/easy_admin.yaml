@@ -17,7 +17,6 @@ easy_admin:
                     - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
         Notice:
             class: App\Entity\Notice
-            file_base_path: '..\uploads\files\'
             list:
                 fields:
                     - { property: 'Title' }
@@ -28,7 +27,8 @@ easy_admin:
                     - { property: 'Title' }
                     - { property: 'Date'}
                     - { property: 'Content', type: 'text_editor' }
-                    - { property: 'photo', type: 'file_upload' , type_options: { upload_filename: '[slug]-[contenthash].[extension]' , upload_dir: 'public\uploads\files\' } }
+                    - { type: 'group', css_class: 'col-sm-4', label: 'Attachments', icon: 'paperclip' }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
         User:
             class: App\Entity\User
         Subject:

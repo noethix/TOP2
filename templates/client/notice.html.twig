@@ -12,39 +12,28 @@
 
 {% block body %}
 
-<h1 class="headers">Notice Board</h1>
+    <h1 class="headers header-notice">Notice Board</h1>
+    <div class="notice-box">
+            {% for notice in notices %}
+                    <img class="news-pic" src="{{ asset('uploads/files/' ~ notice.getImage()) }}" alt="">
+                    <div class="notice-content">
+                        <h2>{{ notice.Title | raw}}</h2>
+                        <p class="date">{{ notice.Date ? notice.Date|date('d-m-Y') : '' }}</p>
+                        <p>{{ notice.Content | raw }}</p>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Date</th>
-                <th>Photo</th>
-                <th>Content</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for notice in notices %}
-            <tr>
-                <td>{{ notice.id }}</td>
-                <td>{{ notice.Title }}</td>
-                <td>{{ notice.Date ? notice.Date|date('Y-m-d') : '' }}</td>
-                <td>{{ notice.Photo }}</td>
-                <td>{{ notice.Content }}</td>
-                <td>
-                    <a href="{{ path('notice_show', {'id': notice.id}) }}">show</a>
-                    <a href="{{ path('notice_edit', {'id': notice.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    </div>
+                    
+                      <!--<a href="{{ path('notice_show', {'id': notice.id}) }}">show</a>
+                        <a href="{{ path('notice_edit', {'id': notice.id}) }}">edit</a>-->  
+                    
+           <!--{% else %}
+                <tr>
+                    <td colspan="6">no records found</td>
+                </tr>
+            {% endfor %}--> 
+        
+
+</div>
 
 
 {% endblock %}

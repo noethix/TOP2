@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NoticeRepository")
+ * @Vich\Uploadable
  */
 class Notice
 {
@@ -26,10 +29,17 @@ class Notice
      */
     private $Date;
 
-    /**
+   /**
      * @ORM\Column(type="string", length=255)
+     * @var string
      */
-    private $Photo;
+    private $image;
+
+    /**
+     * @Vich\UploadableField(mapping="news", fileNameProperty="image")
+     * @var File
+     */
+    private $imageFile;
 
     /**
      * @ORM\Column(type="text")
@@ -65,16 +75,25 @@ class Notice
         return $this;
     }
 
-    public function getPhoto(): ?string
+    public function setImageFile(File $image = null)
     {
-        return $this->Photo;
+        $this->imageFile = $image;
+
     }
 
-    public function setPhoto(string $Photo): self
+    public function getImageFile()
     {
-        $this->Photo = $Photo;
+        return $this->imageFile;
+    }
 
-        return $this;
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    public function getImage()
+    {
+        return $this->image;
     }
 
     public function getContent(): ?string
