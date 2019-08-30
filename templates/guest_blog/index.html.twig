@@ -1,34 +1,39 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_blog.html.twig' %}
 
 {% block title %}Guest Blog{% endblock %}
 
 {% block body %}
-<section class="blog-top">
- {% if is_granted('ROLE_ADMIN') %}
-<button class="btn btn-redirect">
-    <a href="{{ path('easyadmin') }}">* Go to Admin Panel * </a>
-</button>
-{% endif %}   
+
+
+{% for guest_blog in guest_blogs %}
+<section class="guest-blog-post">
+    <div class="title-date">
+        <h1>{{ guest_blog.Service }}</h1>
+        <p>{{ guest_blog.Date ? guest_blog.Date|date('d-m-Y') : '' }}</p>
+
+        {% if user == guest_blog.author %}
+        <button class="blog-action"><a href="{{ path('guest_blog_edit', {'id': guest_blog.id}) }}">Edit</a></button>
+        <button class="blog-action"><a href="{{ path('guest_blog_delete', {'id': guest_blog.id}) }}">Delete</a></button>
+        {% endif %}
+
+        {% if is_granted('ROLE_ADMIN') %}
+        <button class="blog-action"><a href="{{ path('guest_blog_delete', {'id': guest_blog.id}) }}">ADMIN DELETE</a></button>
+        {% endif %}
+    </div>
+
+    <div class="blog-middle">
+        <h2>{{ guest_blog.Title }}</h2>
+        <p>{{ guest_blog.content }} </p>
+    </div>
+
+    <img class="photo" src="{{ asset('PHOTOS/' ~ guest_blog.Photo()) }}">
+
+
+
+    {% endfor %}
 </section>
 
-        {% for guest_blog in guest_blogs %}
 
-            {{ guest_blog.Title }}             {{ guest_blog.Service }} </br>
-            {{ guest_blog.Date ? guest_blog.Date|date('Y-m-d') : '' }}
-             <img class="photo" src="{{ asset('PHOTOS/' ~ guest_blog.Photo()) }}" >
-
-            {% if user == guest_blog.author %}
-                    <a href="{{ path('guest_blog_edit', {'id': guest_blog.id}) }}">edit</a>
-                    <a href="{{ path('guest_blog_delete', {'id': guest_blog.id}) }}">delete</a>
-            {% endif %}
-            {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('guest_blog_delete', {'id': guest_blog.id}) }}">delete</a>
-            {% endif %}
-
-            </tr>
-        </tbody>
-    </table>
-        {% endfor %}
-
-    <a href="{{ path('guest_blog_new') }}">Something to share ?</a>
+<button class="btn btn-share">
+    <a href="{{ path('guest_blog_new') }}">Something to share ?</a></button>
 {% endblock %}

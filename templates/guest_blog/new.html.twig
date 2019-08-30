@@ -1,11 +1,18 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_blog.html.twig' %}
 
 {% block title %}Something to share ?{% endblock %}
 
 {% block body %}
+
+<div class="blog-share">
     <h1>I want to share this :</h1>
 
     {{ include('guest_blog/_form.html.twig') }}
 
+    <div class="back">
+        <img src="{{ asset('PICS/left-arrow.png') }}" alt="left arrow">
+    
     <a href="{{ path('guest_blog_index') }}">Back to blog</a>
+    </div>
+</div>
 {% endblock %}

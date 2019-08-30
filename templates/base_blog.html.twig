@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Home{% endblock %}</title>
+
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Playfair+Display|Roboto+Condensed:300,400&display=swap" rel="stylesheet"> 
+
+    <link rel="shortcut icon" href="{{asset('../public/PICS/outside_circle.ico')}}" type="image/x-icon"/>
+    
+    <link rel="stylesheet" href="{{asset('../public/CSS/base_blog.css')}}">
+
+    {% block stylesheets %}{% endblock %}
+</head>
+
+
+<body>
+
+    <!--Navbar-->
+    
+        <div class="top-top">
+            <p class="info">To leave this website quickly, click 'Escape Route' below or logo. </p>
+            <div class="login">
+               {% if app.user %}
+    <a href="{{ path('app_logout') }}">Logout</a>
+{% else %}
+    <a href="{{ path('app_login') }}">Login</a> 
+{% endif %}  
+            </div>
+           
+        </div>
+      <section class="blog-top">
+            {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('easyadmin') }}"></a>  <button class="btn btn-redirect btn-panel-admin">
+                  <img src="{{ asset('PICS/control-panel.png') }}"><p>Go to Admin Panel</p>  
+              </button></a>
+              {% endif %}   
+    <h1 class="blog-title"> * Outsider Blog *</h1>
+    <h2>Share what tips you have with your fellow outsiders!</h2>          
+               
+    </section>
+   
+
+    {% block body %}{% endblock %}
+
+    <!--Return to top button-->
+   
+
+    <!--Footer-->
+    <footer>
+        <div class="footer-links">
+            <div class="left">
+                <p class="copyright">© The Outside Project, 2019.</p>
+            </div>
+
+            <div class="middle">
+                <p>Colleagues, friends and activists creating a free, independent grassroots project</p>
+            </div>
+
+            <div class="right">
+                <a href="https://twitter.com/lgbtiqoutside?lang=en" target="_blank"><img class="footer-twitter"  src="{{ asset('PICS/twitter.png') }}"
+                    alt="twitter logo"></img></a>
+                <a href="https://www.instagram.com/lgbtiqoutside/?hl=en" target="_blank"><img class="footer-insta" src="{{ asset('PICS/instagram.png') }}"
+                    alt="instagram logo"></img></a>
+                <a href="https://www.facebook.com/TheOutsideProject/" target="_blank"><img class="footer-fb"src="{{ asset('PICS/facebook.png') }}"
+                    alt="facebooklogo"></img></a>
+            </div>
+
+    </footer>
+
+    {% block javascripts %}{% endblock %}
+</body>
+
+</html>
