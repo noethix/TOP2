@@ -10,15 +10,18 @@
     <div class="title-date">
         <h1>{{ guest_blog.Service }}</h1>
         <p>{{ guest_blog.Date ? guest_blog.Date|date('d-m-Y') : '' }}</p>
+        
+        <div class="action-btns">
+            {% if user == guest_blog.author %}
+            <button class="blog-action"><a href="{{ path('guest_blog_edit', {'id': guest_blog.id}) }}">Edit</a></button>
+            <button class="blog-action"><a href="{{ path('guest_blog_delete', {'id': guest_blog.id}) }}">Delete</a></button>
+            {% endif %}
+    
+            {% if is_granted('ROLE_ADMIN') %}
+            <button class="blog-action"><a href="{{ path('guest_blog_delete', {'id': guest_blog.id}) }}">ADMIN DELETE</a></button>
+            {% endif %}
 
-        {% if user == guest_blog.author %}
-        <button class="blog-action"><a href="{{ path('guest_blog_edit', {'id': guest_blog.id}) }}">Edit</a></button>
-        <button class="blog-action"><a href="{{ path('guest_blog_delete', {'id': guest_blog.id}) }}">Delete</a></button>
-        {% endif %}
-
-        {% if is_granted('ROLE_ADMIN') %}
-        <button class="blog-action"><a href="{{ path('guest_blog_delete', {'id': guest_blog.id}) }}">ADMIN DELETE</a></button>
-        {% endif %}
+        </div>
     </div>
 
     <div class="blog-middle">

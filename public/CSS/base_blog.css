@@ -61,7 +61,7 @@ html, body {
     font-size: 1.3rem;
     cursor: pointer;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin-top: 2%;
@@ -177,9 +177,8 @@ html, body {
 .photo {
     width: 1200px;
     height: 900px;
-  height: auto;
-  object-fit: cover;
-  margin: 2%;
+    object-fit: cover;
+    margin: 2%;
 }
 
 
@@ -294,6 +293,84 @@ html, body {
 
 
 @media screen and (max-width: 800px) {
+
+/*     BLOG POST     */  
+
+    .blog-top {
+        padding: 10% 0;
+    }
+
+    .blog-top h1 {
+        padding: 5% 0;
+    }
+    .guest-blog-post {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+    }
+
+    .title-date h1 {
+        margin-left: 4%;
+    }
+
+    .title-date p {
+        margin: 0 0 4% 4%;
+    }
+
+    .title-date {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        border-width: 0 0 0 0;
+        border-style: none;
+    }
+
+    .action-btns {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .blog-action {
+        padding: 0% 6%;
+        font-size: .9rem;
+        height: 30px;
+    }
+
+    .blog-middle {
+        margin: 2% 4%;
+        padding: 0;
+        border-width: 0 0 0 0;
+        border-style: none;
+    }
+
+    .photo {
+        width: 340px;
+        height: 200px;
+        object-fit: cover;
+        margin: 2% auto;
+    }
+
+    .btn-share {
+        margin: 6% auto;
+    }
+
+    /*     NEW BLOG POST     */
+
+    .blog-share h1 {
+        padding: 5% 0 10% 0;
+    }
+
+    form{
+        width: 90%;
+    }
+  
+    .btn-contact {
+        margin: 5% auto;
+    }
+
+/*     FOOTER     */
     .footer-links {
         font-size: .6rem;
         flex-direction: column;

@@ -376,6 +376,7 @@ ul li {
   text-align: justify;
   font-family: 'EB Garamond', serif;
   line-height: 1.5;
+  color: rgb(78, 78, 78);
 }
 
 .notice-content h2 {
@@ -384,7 +385,7 @@ ul li {
 }
 
 .date {
-  color: rgb(78, 78, 78);
+  color: rgb(104, 104, 104);
   font-family: 'Roboto Condensed', sans-serif;
   font-size: .8rem;
   padding-bottom: 3%;

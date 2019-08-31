@@ -31,13 +31,18 @@
            
         </div>
       <section class="blog-top">
-            {% if is_granted('ROLE_ADMIN') %}
-            <a href="{{ path('easyadmin') }}"></a>  <button class="btn btn-redirect btn-panel-admin">
-                  <img src="{{ asset('PICS/control-panel.png') }}"><p>Go to Admin Panel</p>  
-              </button></a>
-              {% endif %}   
+  {% if is_granted('ROLE_ADMIN') %}
+              <button class="btn btn-redirect btn-panel-admin">
+                  <a href="{{ path('easyadmin') }}"> 
+                   <!--<img src="{{ asset('PICS/control-panel.png') }}">--><p>Go to Admin Panel</p> </a> 
+               </button>
+               {% endif %}   
     <h1 class="blog-title"> * Outsider Blog *</h1>
-    <h2>Share what tips you have with your fellow outsiders!</h2>          
+    <h2>Share what tips you have with your fellow outsiders!</h2>
+
+       
+
+                
                
     </section>
    
