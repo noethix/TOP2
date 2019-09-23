@@ -10,11 +10,12 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Playfair+Display|Roboto+Condensed:300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Playfair+Display|Roboto+Condensed:300&display=swap"
+        rel="stylesheet">
 
 
 
-    <link rel="shortcut icon" href="{{asset('../public/PICS/outside_circle.ico')}}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{{asset('../public/PICS/outside_circle.ico')}}" type="image/x-icon" />
 
     <link rel="stylesheet" href="{{asset('../public/CSS/home.css')}}">
 
@@ -28,30 +29,37 @@
     <section class="navbar">
 
     </section>
-    
+
     <div class="top-top">
-            <p class="info">To leave this website quickly, click 'Escape Route' below or logo.</p>
-            <p class="login">{% if app.user %}
-                    <a href="{{ path('app_logout') }}">Logout</a>
-                {% else %}
-                    <a href="{{ path('app_login') }}">Login</a> 
-                {% endif %}</p>
-        </div>    
+            {% if is_granted('ROLE_ADMIN') %}
+              <p class="panel-admin">
+                  <a href="{{ path('easyadmin') }}"> 
+                   <!--<img src="{{ asset('PICS/control-panel.png') }}">--> Admin Panel </a> 
+               </p>
+               {% endif %}  
+        <p class="info">To leave this website quickly, click 'Escape Route' below or logo.</p>
+        <p class="login">{% if app.user %}
+            <a href="{{ path('app_logout') }}">Logout</a>
+            {% else %}
+            <a href="{{ path('app_login') }}">Login</a>
+            {% endif %}</p>
     </div>
-    
-        
+    </div>
+
+
     <div class="topnav" id="topnav">
-    
-            <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                        <i class="fa fa-bars"></i>
+
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
         </a>
-        
+
         <div class="logo-div">
-                <img class="logo" src="{{ asset('PICS/TOP_banner.png') }}" alt="the outside project logo"></img>
-            
-            </div>
-            
-            
+            <a class="logo-logo" href="https://www.bbc.co.uk/"><img class="logo" src="{{ asset('PICS/TOP_banner.png') }}"
+                    alt="the outside project logo"></img></a>
+
+        </div>
+
+
 
         <nav class="nav-right">
             <a class="home border-link" href="{{ path ('home') }}">Home</a>
@@ -60,7 +68,8 @@
             <a class="help border-link" href="{{ path ('help') }}">Need Help?</a>
             <a class="referral border-link" href="{{ path ('referral') }}">Referrals</a>
             <a class="contact border-link" href="{{ path ('contact_new') }}">Contact us</a>
-            <a class="donate border-link" href="https://www.goldengiving.com/wall/the-outside-project" target="_blank">Donation</a>
+            <a class="donate border-link" href="https://www.goldengiving.com/wall/the-outside-project"
+                target="_blank">Donation</a>
             <a class="escape border-link" href="https://www.bbc.com/">Escape Route</a>
         </nav>
 
@@ -71,67 +80,71 @@
 
     <section class="home-TOP">
         <div class="notice-board">
-            <h1 class =" header-notice-board">Notice Board</h1>
+            <h1 class=" header-notice-board">Notice Board</h1>
             {% for notice in notices %}
-            
-                <h3>{{ notice.Title | raw }}</h3>
-                <p class="date">{{ notice.Date ? notice.Date|date('d-m-Y') : '' }}</p>
-                <img class="news-pic" src="{{ asset('uploads/files/' ~ notice.getImage()) }}" alt=""></img>
-                <p class="notice-content">{{ notice.Content | easyadmin_truncate (300, true) | raw }}</p>
-                <p class="readmore"><a href="{{ path ('notice') }}">READ MORE</a></p>
-            </div>
-                
-                <!--<td>
+
+            <h3>{{ notice.Title | raw }}</h3>
+            <p class="date">{{ notice.Date ? notice.Date|date('d-m-Y') : '' }}</p>
+            <img class="news-pic" src="{{ asset('uploads/files/' ~ notice.getImage()) }}" alt=""></img>
+            <p class="notice-content">{{ notice.Content | easyadmin_truncate (300, true) | raw }}</p>
+            <p class="readmore"><a href="{{ path ('notice') }}">READ MORE</a></p>
+        </div>
+
+        <!--<td>
                     <a href="{{ path('notice_show', {'id': notice.id}) }}">show</a>
                     <a href="{{ path('notice_edit', {'id': notice.id}) }}">edit</a>
                 </td>-->
-            
+
         {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
+        <tr>
+            <td colspan="6">no records found</td>
+        </tr>
         {% endfor %}
         </div>
 
-    </div>
-            <div class="intro-shelter">
-                <h1 class="header-intro"> 📢 LONDON LGBTIQ+ SHELTER 🏳️‍🌈‬</h1>
-    
-                <div class="info-shelter">
-                    <p>Christmas is over, but our service is needed year round. Are you in crisis, homeless, sofa-surfing, survival sex-working? Reach us & Stonewall Housing:</p>
-    <p>☎️ tel: 0207 359 5767 (10am-1pm)</p>
-    
-    <p>💻 online referral: <a href="http://stonewallhousing.org/services/referral-form/" target="_blank">CLICK HERE</a></p>
-    
-    <p>👥 drop-ins:</p>
-    
-    <h2>Monday  18:00 – 21:00 </h2>
-    <p>The Outside Project Camden Hub. Castlehaven Community Association, 23 Castlehaven Road NW1 8RU</p>
-    
-    <h2> Wednesday  14:00 – 15:30</h2>
-    <p>Origin Housing, St Richards House, 110 Eversholt Street, London, NW1 1BS</p>
-    
-    <h2>Friday 14:00 – 15:30</h2>
-    <p>London Friend, 86 Caledonian Road, London, N1 9DN</p>
-    
-    <p>Monthly drop in sessions</p>
-    <h2>First Wednesday of every month  17:00 – 19:00</h2>
-    <p>cliniQ, 56 Dean Street, London, W1D 6AQ (for trans people) </p>
-    
-    <h2>Second Wednesday of every month  12:00 – 14:00 </h2>
-    <p>Camden LGBT Forum Hub at Union Chapel, Compton Terrace, London, N1 2UN</p>
-    
-    <p>All services are free and confidential and all the venues are accessible for people with disabilities. No appointments necessary. (Pre-arranged appointments can be made for between 15.30 and 17.00) 
-    #homelesslgbtiqsolidarity #LGBTIQcommunitycentre #identityresponsiveservices</p>
         </div>
-    </section>
-       
-    
-       
-        
-        {% endblock %}
+        <div class="intro-shelter">
+            <h1 class="header-intro"> 📢 LONDON LGBTIQ+ SHELTER 🏳️‍🌈‬</h1>
 
- <div id="map"></div>
+            <div class="info-shelter">
+                <p>Christmas is over, but our service is needed year round. Are you in crisis, homeless, sofa-surfing,
+                    survival sex-working? Reach us & Stonewall Housing:</p>
+                <p>☎️ tel: 0207 359 5767 (10am-1pm)</p>
+
+                <p>💻 online referral: <a href="http://stonewallhousing.org/services/referral-form/"
+                        target="_blank">CLICK HERE</a></p>
+
+                <p>👥 drop-ins:</p>
+
+                <h2>Monday 18:00 – 21:00 </h2>
+                <p>The Outside Project Camden Hub. Castlehaven Community Association, 23 Castlehaven Road NW1 8RU</p>
+
+                <h2> Wednesday 14:00 – 15:30</h2>
+                <p>Origin Housing, St Richards House, 110 Eversholt Street, London, NW1 1BS</p>
+
+                <h2>Friday 14:00 – 15:30</h2>
+                <p>London Friend, 86 Caledonian Road, London, N1 9DN</p>
+
+                <p>Monthly drop in sessions</p>
+                <h2>First Wednesday of every month 17:00 – 19:00</h2>
+                <p>cliniQ, 56 Dean Street, London, W1D 6AQ (for trans people) </p>
+
+                <h2>Second Wednesday of every month 12:00 – 14:00 </h2>
+                <p>Camden LGBT Forum Hub at Union Chapel, Compton Terrace, London, N1 2UN</p>
+
+                <p>All services are free and confidential and all the venues are accessible for people with
+                    disabilities. No appointments necessary. (Pre-arranged appointments can be made for between 15.30
+                    and 17.00)
+                    #homelesslgbtiqsolidarity #LGBTIQcommunitycentre #identityresponsiveservices</p>
+            </div>
+    </section>
+
+
+
+
+    {% endblock %}
+
+    <div id="map"></div>
     <!--Return to top button-->
     <a href="javascript:" id="return-to-top"><i class="fas fa-chevron-up"></i></a>
 
@@ -147,42 +160,41 @@
             </div>
 
             <div class="right">
-                    <a href="https://twitter.com/lgbtiqoutside?lang=en" target="_blank"><img class="footer-twitter"  src="{{ asset('PICS/twitter.png') }}"
-                        alt="twitter logo"></img></a>
-                    <a href="https://www.instagram.com/lgbtiqoutside/?hl=en" target="_blank"><img class="footer-insta" src="{{ asset('PICS/instagram.png') }}"
-                        alt="instagram logo"></img></a>
-                    <a href="https://www.facebook.com/TheOutsideProject/" target="_blank"><img class="footer-fb"src="{{ asset('PICS/facebook.png') }}"
-                        alt="facebooklogo"></img></a>
-                </div>
+                <a href="https://twitter.com/lgbtiqoutside?lang=en" target="_blank"><img class="footer-twitter"
+                        src="{{ asset('PICS/twitter.png') }}" alt="twitter logo"></img></a>
+                <a href="https://www.instagram.com/lgbtiqoutside/?hl=en" target="_blank"><img class="footer-insta"
+                        src="{{ asset('PICS/instagram.png') }}" alt="instagram logo"></img></a>
+                <a href="https://www.facebook.com/TheOutsideProject/" target="_blank"><img class="footer-fb"
+                        src="{{ asset('PICS/facebook.png') }}" alt="facebooklogo"></img></a>
+            </div>
 
     </footer>
 
-     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
-   integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-   crossorigin=""/>
-        <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-   crossorigin=""></script>
-   <script> 
-var map = L.map('map').setView([51.505, -0.09], 12);
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css"
+        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+        crossorigin="" />
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
+    <script>
+        var map = L.map('map').setView([51.505, -0.09], 12);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-}).addTo(map);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
 
-{% for point in points %}
-L.marker([{{point.coordinate}}]).addTo(map)
-    .bindPopup('{{ point.name }}')
-        .openPopup();
-    
-{% endfor %}
+        {% for point in points %}
+        L.marker([{{ point.coordinate }}]).addTo(map)
+            .bindPopup('{{ point.name }}')
+            .openPopup();
 
-   </script>
+        {% endfor %}
+    </script>
 
 
-   
-  <!-- <script>
+
+    <!-- <script>
         $(window).scroll(function () {
             if ($(this).scrollTop() >= 50) { // If page is scrolled more than 50px
                 $('#return-to-top').fadeIn(200); // Fade in the arrow
@@ -207,8 +219,8 @@ L.marker([{{point.coordinate}}]).addTo(map)
             }
         }
     </script>
-{% block javascripts %}
-{% endblock %}
+    {% block javascripts %}
+    {% endblock %}
 </body>
 
 </html>

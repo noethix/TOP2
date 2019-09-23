@@ -14,7 +14,7 @@ easy_admin:
                     - { property: 'Date'}
                     - { property: 'Content', type: 'text_editor' }
                     - { type: 'group', css_class: 'col-sm-4', label: 'Attachments', icon: 'paperclip' }
-                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: false} }
         Notice:
             class: App\Entity\Notice
             list:
@@ -28,7 +28,7 @@ easy_admin:
                     - { property: 'Date'}
                     - { property: 'Content', type: 'text_editor' }
                     - { type: 'group', css_class: 'col-sm-4', label: 'Attachments', icon: 'paperclip' }
-                    - { property: 'imageFile', type: 'vich_image', type_options: { required: true } }
+                    - { property: 'imageFile', type: 'vich_image', type_options: { required: false } }
         User:
             class: App\Entity\User
         Subject:

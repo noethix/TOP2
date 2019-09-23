@@ -10,12 +10,21 @@ html, body {
   }
 /*     NAVABAR     */
 
+.panel-admin a {
+  color: #000;
+  text-decoration: none;
+}
+
+.panel-admin {
+  padding-left: 1%;
+}
 
 .navbar {
   position: fixed;
   width: 100%;
   background: #fff;
 }
+
 .top-top {
   position: fixed;
   width: 100%;
@@ -40,6 +49,11 @@ html, body {
   margin-top: -2%;
 }
 
+.logo-div {
+  display: flex;
+  align-items: left;
+}
+
 .login:hover{
   color: rgb(100, 100, 100);
 }
@@ -55,6 +69,7 @@ html, body {
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
+  width: 100%;
   color: #f2f2f2;
   font-weight: 300;
   text-align: center;
@@ -62,6 +77,12 @@ html, body {
   margin-top: 2%;
 }
 
+.topnav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 1.2%;
+}
 
 .topnav a {
   color: #000;
@@ -333,6 +354,7 @@ ul li {
   font-family: 'Playfair Display', serif;
   padding-bottom: 2%;
 }
+
 .news-content {
   display: flex;
   flex-direction: row;
@@ -353,6 +375,8 @@ ul li {
 .news-content-middle {
   padding: 0 4% 0 0;
 }
+
+.news-text {}
 .news-pic {
   width: 250px;
   height: 200px;
@@ -367,12 +391,22 @@ ul li {
 }
 .notice-box {
   display: flex;
+  flex-direction: column;
+}
+
+.notice-inside {
+  display: flex;
+  flex-direction: row;
+}
+
+.notice-inside p {
+  padding-right: 4%;
 }
 
 .notice-content {
   display: flex;
   flex-direction: column;
-  padding-right: 5%;
+  padding: 0 4%;
   text-align: justify;
   font-family: 'EB Garamond', serif;
   line-height: 1.5;
@@ -381,7 +415,7 @@ ul li {
 
 .notice-content h2 {
   font-family: 'EB Garamond', serif;
-  padding-bottom: 1%;
+  padding: 4% 0 1% 0;
 }
 
 .date {
@@ -391,9 +425,7 @@ ul li {
   padding-bottom: 3%;
 }
 
-.notice-box img {
-  padding: 0 4%;
-}
+
 
 
 /*     NEED HELP?    */
@@ -636,7 +668,7 @@ form textarea {
       font-size: .6rem;
     }
 
-    .topnav a:not(.logo) {
+    .nav-right a {
       display: none;
     }
 

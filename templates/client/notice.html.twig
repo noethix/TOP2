@@ -12,26 +12,25 @@
 
 {% block body %}
 
-    <h1 class="headers header-notice">Notice Board</h1>
-    <div class="notice-box">
-            {% for notice in notices %}
-                    <img class="news-pic" src="{{ asset('uploads/files/' ~ notice.getImage()) }}" alt="">
-                    <div class="notice-content">
-                        <h2>{{ notice.Title | raw}}</h2>
-                        <p class="date">{{ notice.Date ? notice.Date|date('d-m-Y') : '' }}</p>
-                        <p>{{ notice.Content | raw }}</p>
+<h1 class="headers header-notice">Notice Board</h1>
+<div class="notice-box">
+    {% for notice in notices %}
+    <div class="notice-content">
+        <h2>{{ notice.Title | raw}}</h2>
+        <p class="date">{{ notice.Date ? notice.Date|date('d-m-Y') : '' }}</p>
+        <div class="notice-inside">
+            <img class="news-pic" src="{{ asset('uploads/files/' ~ notice.getImage()) }}" alt="">
+            <p>{{ notice.Content | raw }}</p>
 
-                    </div>
-                    
-                      <!--<a href="{{ path('notice_show', {'id': notice.id}) }}">show</a>
-                        <a href="{{ path('notice_edit', {'id': notice.id}) }}">edit</a>-->  
-                    
-           <!--{% else %}
-                <tr>
-                    <td colspan="6">no records found</td>
-                </tr>
-            {% endfor %}--> 
-        
+        </div>
+
+
+    </div>
+
+
+
+
+    {% endfor %}
 
 </div>
 

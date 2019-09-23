@@ -10,10 +10,12 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Playfair+Display|Roboto+Condensed:300,400&display=swap" rel="stylesheet"> 
+    <link
+        href="https://fonts.googleapis.com/css?family=EB+Garamond|Playfair+Display|Roboto+Condensed:300,400&display=swap"
+        rel="stylesheet">
 
-    <link rel="shortcut icon" href="{{asset('../public/PICS/outside_circle.ico')}}" type="image/x-icon"/>
-    
+    <link rel="shortcut icon" href="{{asset('../public/PICS/outside_circle.ico')}}" type="image/x-icon" />
+
     <link rel="stylesheet" href="{{asset('../public/CSS/base.css')}}">
 
     {% block stylesheets %}{% endblock %}
@@ -25,24 +27,32 @@
     <!--Navbar-->
     <section class="navbar">
         <div class="top-top">
-            <p class="info">To leave this website quickly, click 'Escape Route' below or logo. </p>
-            <div class="login">{% if app.user %}
-                    <a href="{{ path('app_logout') }}">Logout</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                <p class="panel-admin">
+                    <a href="{{ path('easyadmin') }}"> 
+                     <!--<img src="{{ asset('PICS/control-panel.png') }}">--> Admin Panel </a> 
+                 </p>
+                 {% endif %}
+                 
+            <p class="info">To leave this website quickly, click 'Escape Route' below or the logo. </p>
+            <div class="login">
+                {% if app.user %}
+                <a href="{{ path('app_logout') }}">Logout</a>
                 {% else %}
-                    <a href="{{ path('app_login') }}">Login</a> 
+                <a href="{{ path('app_login') }}">Login</a>
                 {% endif %}</div>
         </div>
-    
+
         <div class="topnav" id="topnav">
-            
+
             <div class="logo-div">
-                    <img class="logo" src="{{ asset('PICS/TOP_banner.png') }}" alt="the outside project logo"></img>
-                
-                </div>
-                
-                
-    
-    
+                <a href="https://www.bbc.co.uk/"><img class="logo" src="{{ asset('PICS/TOP_banner.png') }}"
+                        alt="the outside project logo"></img></a>
+            </div>
+
+
+
+
             <nav class="nav-right">
                 <a class="home border-link" href="{{ path ('home') }}">Home</a>
                 <a class="project border-link" href="{{ path ('project') }}">The Project</a>
@@ -50,16 +60,17 @@
                 <a class="help border-link" href="{{ path ('help') }}">Need Help?</a>
                 <a class="referral border-link" href="{{ path ('referral') }}">Referrals</a>
                 <a class="contact border-link" href="{{ path ('contact_new') }}">Contact us</a>
-                <a class="donate border-link" href="https://www.goldengiving.com/wall/the-outside-project" target="_blank">Donation</a>
+                <a class="donate border-link" href="https://www.goldengiving.com/wall/the-outside-project"
+                    target="_blank">Donation</a>
                 <a class="escape border-link" href="https://www.google.co.uk/">Escape Route</a>
             </nav>
-    
+
             <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                 <i class="fa fa-bars"></i>
             </a>
         </div>
     </section>
-   
+
 
     {% block body %}{% endblock %}
 
@@ -78,12 +89,12 @@
             </div>
 
             <div class="right">
-                <a href="https://twitter.com/lgbtiqoutside?lang=en" target="_blank"><img class="footer-twitter"  src="{{ asset('PICS/twitter.png') }}"
-                    alt="twitter logo"></img></a>
-                <a href="https://www.instagram.com/lgbtiqoutside/?hl=en" target="_blank"><img class="footer-insta" src="{{ asset('PICS/instagram.png') }}"
-                    alt="instagram logo"></img></a>
-                <a href="https://www.facebook.com/TheOutsideProject/" target="_blank"><img class="footer-fb"src="{{ asset('PICS/facebook.png') }}"
-                    alt="facebooklogo"></img></a>
+                <a href="https://twitter.com/lgbtiqoutside?lang=en" target="_blank"><img class="footer-twitter"
+                        src="{{ asset('PICS/twitter.png') }}" alt="twitter logo"></img></a>
+                <a href="https://www.instagram.com/lgbtiqoutside/?hl=en" target="_blank"><img class="footer-insta"
+                        src="{{ asset('PICS/instagram.png') }}" alt="instagram logo"></img></a>
+                <a href="https://www.facebook.com/TheOutsideProject/" target="_blank"><img class="footer-fb"
+                        src="{{ asset('PICS/facebook.png') }}" alt="facebooklogo"></img></a>
             </div>
 
     </footer>
@@ -114,10 +125,10 @@
             }
         }
     </script>
-            <!-- Make sure you put this AFTER Leaflet's CSS -->
- <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
-   integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
-   crossorigin=""></script>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js"
+        integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og=="
+        crossorigin=""></script>
     {% block javascripts %}{% endblock %}
 </body>
 

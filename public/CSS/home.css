@@ -11,6 +11,14 @@ html, body {
 }
 /*     NAVABAR     */
 
+.panel-admin a {
+    color: #000;
+    text-decoration: none;
+}
+
+.panel-admin {
+    padding-left: 1%;
+}
 .top-top {
     position: relative;
     display: flex;
@@ -32,8 +40,6 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-
-
 }
 
 .logo {
@@ -341,7 +347,7 @@ h3 {
         font-size: .6rem;
     }
 
-    .topnav a:not(.logo) {
+    .nav-right a {
         display: none;
     }
 

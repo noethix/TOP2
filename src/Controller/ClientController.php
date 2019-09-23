@@ -30,9 +30,13 @@ class ClientController extends AbstractController
     public function home(NoticeRepository $noticeRepository, MapServiceRepository $mapServiceRepository): Response
     {
         return $this->render('client/home.html.twig', [
-            'notices' => $noticeRepository->findAll(Notice::class),
+            'notices' => $noticeRepository->findTheLast(Notice::class),
+            
             'points' => $mapServiceRepository->findAll()
+            
+            
         ]);
+
     }
 
     /**
