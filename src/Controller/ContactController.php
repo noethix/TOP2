@@ -28,7 +28,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/new", name="contact_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, \Swift_Mailer $mailer): Response
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -38,6 +38,30 @@ class ContactController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($contact);
             $entityManager->flush();
+            $name = ($form['Name']->getData());
+            $email = ($form['Email']->getData());
+            $subject = ($form ['Subject']->getData());
+            $content = ($form['Content']->getData());
+            $entityManager = $this->getDoctrine()->getRepository(Subject::class);
+            $toEmail = $entityManager -> findOneBy(['name' => $subject]);
+            $toEmail = $toEmail -> getEmail();
+
+
+            $message = (new \Swift_Message('Hello Email'))
+                ->setFrom('tech@lgbtioutside.org')
+                ->setTo('$toEmail')
+                ->setBody(
+                    $this->renderView(
+                        // templates/hello/email.txt.twig
+                        'mail/newContact.txt.twig',
+                        ['name' => $name,
+                        'email' => $email,
+                        'subject'=> $subject,
+                        'content' => $content,]
+                    )
+                )
+            ;
+    $mailer->send($message);
 
             return $this->redirectToRoute('home');
         }
