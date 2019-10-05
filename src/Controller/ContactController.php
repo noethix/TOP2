@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\Subject;
 use App\Form\ContactType;
 use App\Repository\ContactRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -43,25 +44,25 @@ class ContactController extends AbstractController
             $subject = ($form ['Subject']->getData());
             $content = ($form['Content']->getData());
             $entityManager = $this->getDoctrine()->getRepository(Subject::class);
-            $toEmail = $entityManager -> findOneBy(['name' => $subject]);
-            $toEmail = $toEmail -> getEmail();
+            $toEmail = $subject -> getEmail();
+            $realSubject = $subject -> getName();
 
-
-            $message = (new \Swift_Message('Hello Email'))
+            $message = (new \Swift_Message('Message from the contact form'))
                 ->setFrom('tech@lgbtioutside.org')
-                ->setTo('$toEmail')
+                ->setTo($toEmail)
                 ->setBody(
                     $this->renderView(
-                        // templates/hello/email.txt.twig
-                        'mail/newContact.txt.twig',
+                        'mail/newContact.html.twig',
                         ['name' => $name,
                         'email' => $email,
-                        'subject'=> $subject,
+                        'subject'=> $realSubject,
                         'content' => $content,]
-                    )
+                    ),
+                    'text/html'
                 )
             ;
     $mailer->send($message);
+                
 
             return $this->redirectToRoute('home');
         }

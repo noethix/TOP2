@@ -19,11 +19,11 @@ class ContactType extends AbstractType
         $builder
             ->add('Name', TextType::class, array('label'=>'Your Name', 'attr' => array(
                 'title' => 'Your Name',
-                'placeholder' => "Robin Banks"
+                'placeholder' => "Robin Mansions"
               )))
             ->add('Email', EmailType::class, array('label'=>'Your Email', 'attr' => array(
                 'title' => 'Your Email',
-                'placeholder' => 'robinbanks@gmail.com'
+                'placeholder' => 'robinmansions@gmail.com'
                 )))
             ->add('Subject', EntityType::class, [
                 'class' => Subject::class,

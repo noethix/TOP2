@@ -27,8 +27,7 @@ class Contact
     private $Email;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Subject", cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Subject")
      */
     private $Subject;
 
