@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Contact;
 use App\Entity\Subject;
 use App\Form\ContactType;
+use Symfony\Component\Mailer\Bridge\Google\Smtp\GmailTransport;
 use App\Repository\ContactRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,7 +30,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/new", name="contact_new", methods={"GET","POST"})
      */
-    public function new(Request $request, \Swift_Mailer $mailer): Response
+    public function new(Request $request): Response
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -43,23 +44,13 @@ class ContactController extends AbstractController
             $email = ($form['Email']->getData());
             $subject = ($form ['Subject']->getData());
             $content = ($form['Content']->getData());
+            $transport = new GmailTransport('tech@@lgbtiqoutside.org', 'nickcecile2209');
+            $mailer = new Mailer($transport);
+            $mailer->send($email);
             $entityManager = $this->getDoctrine()->getRepository(Subject::class);
             $toEmail = $subject -> getEmail();
             $realSubject = $subject -> getName();
 
-            $message = (new \Swift_Message('Message from the contact form'))
-                ->setFrom('tech@lgbtioutside.org')
-                ->setTo($toEmail)
-                ->setBody(
-                    $this->renderView(
-                        'mail/newContact.html.twig',
-                        ['name' => $name,
-                        'email' => $email,
-                        'subject'=> $realSubject,
-                        'content' => $content,]
-                    ),
-                    'text/html'
-                )
             ;
     $mailer->send($message);
                 
