@@ -7,6 +7,9 @@ use App\Entity\Subject;
 use App\Form\ContactType;
 use Symfony\Component\Mailer\Bridge\Google\Smtp\GmailTransport;
 use App\Repository\ContactRepository;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Mime\NamedAddress;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,11 +49,24 @@ class ContactController extends AbstractController
             $content = ($form['Content']->getData());
             $transport = new GmailTransport('tech@@lgbtiqoutside.org', 'nickcecile2209');
             $mailer = new Mailer($transport);
-            $mailer->send($email);
+          
             $entityManager = $this->getDoctrine()->getRepository(Subject::class);
             $toEmail = $subject -> getEmail();
             $realSubject = $subject -> getName();
 
+            $message = (new TemplatedEmail())
+            ->from($email)
+            ->to($subject)
+            ->subject($content)
+
+            // path of the Twig template to render
+            ->htmlTemplate('mail/newContact.html.twig')
+
+            /* pass variables (name => value) to the template
+            ->context([
+                'expiration_date' => new \DateTime('+7 days'),
+                'username' => 'foo',*/
+    
             ;
     $mailer->send($message);
                 
