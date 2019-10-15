@@ -7,6 +7,7 @@ use App\Entity\Subject;
 use App\Form\ContactType;
 use Symfony\Component\Mailer\Bridge\Google\Smtp\GmailTransport;
 use App\Repository\ContactRepository;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Mailer\Mailer;
 use Symfony\Component\Mime\NamedAddress;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -62,11 +63,13 @@ class ContactController extends AbstractController
             // path of the Twig template to render
             ->htmlTemplate('mail/newContact.html.twig')
 
-            /* pass variables (name => value) to the template
+            /* pass variables (name => value) to the template*/
             ->context([
-                'expiration_date' => new \DateTime('+7 days'),
-                'username' => 'foo',*/
-    
+                'name' => $name,
+                'email' => $email,
+                'subject' => $subject,
+                'content' => $content,
+            ])
             ;
     $mailer->send($message);
                 
