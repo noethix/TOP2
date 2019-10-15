@@ -47,7 +47,7 @@ class ContactController extends AbstractController
             $email = ($form['Email']->getData());
             $subject = ($form ['Subject']->getData());
             $content = ($form['Content']->getData());
-            $transport = new GmailTransport('tech@@lgbtiqoutside.org', 'nickcecile2209');
+            $transport = new GmailTransport('tech@lgbtiqoutside.org', 'nickcecile2209');
             $mailer = new Mailer($transport);
           
             $entityManager = $this->getDoctrine()->getRepository(Subject::class);
@@ -56,7 +56,7 @@ class ContactController extends AbstractController
 
             $message = (new TemplatedEmail())
             ->from($email)
-            ->to($subject)
+            ->to($toEmail)
             ->subject($content)
 
             // path of the Twig template to render
