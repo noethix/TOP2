@@ -61,7 +61,14 @@ class ContactController extends AbstractController
             ->subject($content)
 
             // path of the Twig template to render
-            ->htmlTemplate('mail/newContact.html.twig')
+            ->html('Hello,<br>
+            <br>
+            You received a mail from <?php $name ?> - $email about $subject <br><br>
+            
+            Here is the content of the message : <br>
+            
+           $content
+            ')
 
             /* pass variables (name => value) to the template*/
             ->context([
